@@ -1,13 +1,35 @@
-# Getting Started with Create React App
+## Project Name & Pitch
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+GeoView Schema Form
 
-## Available Scripts
+This application is build to get user input and render form using schema and submit configuration to AWS bucket, built with React, JavaScript,REST and CSS.
 
-In the project directory, you can run:
+## Project Status
+This project is currently in development. Users can give input and generate the form.
 
-### `npm start`
+![](../Desktop/Screen Shot 2022-01-08 at 6.55.05 AM.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![](../Desktop/Screen Shot 2022-01-08 at 6.56.00 AM.png)
+
+
+## Installation and Setup Instructions
+
+Clone down this repository. 
+You will need `node` and `npm` installed globally on your machine.
+
+Installation:
+
+`npm install`
+`npm install -g json-server`
+
+To Start Application:
+
+`npx json-server -p 3500 -w data/db.json `
+`npm start`
+
+To Visit App:
+
+`http://localhost:3000/`
+
+## Reflection
 
