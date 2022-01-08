@@ -7,9 +7,9 @@ This application is build to get user input and render form using schema and sub
 ## Project Status
 This project is currently in development. Users can give input and generate the form.
 
-![](../Desktop/Screen Shot 2022-01-08 at 6.55.05 AM.png)
+![](images/InputForm.png)
 
-![](../Desktop/Screen Shot 2022-01-08 at 6.56.00 AM.png)
+![](images/SchemaForm.png)
 
 
 ## Installation and Setup Instructions
