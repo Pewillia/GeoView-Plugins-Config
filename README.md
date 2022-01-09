@@ -9,6 +9,12 @@ This project is currently in development. Users can give input and generate the 
 
 ![](images/InputForm.png)
 
+![](images/InputForm2.png)
+
+![](images/InputForm3.png)
+
+![](images/InputForm4.png)
+
 ![](images/SchemaForm.png)
 
 
