@@ -1,6 +1,7 @@
 /**
  * @author Vijendra Yadav <Vijendra.Yadav@nrcan-rncan.gc.ca >
  */
+
 import {
   Box,
   Button,
@@ -40,7 +41,6 @@ const InputForm = () => {
   let navigate = useNavigate();
   return (
     <div className="InputForm">
-      <Typography variant="h4">Welcome to NRCan Internal</Typography>
       <Formik
         initialValues={initialValues}
         validationSchema={object({
@@ -60,12 +60,20 @@ const InputForm = () => {
       >
         {({ values, setFieldValue, errors, isValid, touched, dirty }) => (
           <Form>
+            <Typography
+              align={"center"}
+              variant="h4"
+              style={{ color: "#000000" }}
+            >
+              Welcome to NRCan Internal
+            </Typography>
+            <Box height={40} />
             <Field
               name="uuid"
               type="uuid"
               as={TextField}
               variant="outlined"
-              color="primary"
+              color="info"
               label="UUID"
               placeholder={"Please ENTER valid UUID value"}
               fullWidth
@@ -89,12 +97,12 @@ const InputForm = () => {
               >
                 <FormControlLabel
                   value="English"
-                  control={<Radio />}
+                  control={<Radio color="info" />}
                   label="English"
                 />
                 <FormControlLabel
                   value="French"
-                  control={<Radio />}
+                  control={<Radio color="info" />}
                   label="French"
                 />
               </RadioGroup>
@@ -114,27 +122,27 @@ const InputForm = () => {
                 <Box height={16} />
                 <FormControlLabel
                   value="Range Slider"
-                  control={<Radio />}
+                  control={<Radio color="info" />}
                   label="Range Slider"
                 />
                 <FormControlLabel
                   value="Chart"
-                  control={<Radio />}
+                  control={<Radio color="info" />}
                   label="Chart"
                 />
                 <FormControlLabel
                   value="Swiper"
-                  control={<Radio />}
+                  control={<Radio color="info" />}
                   label="Swiper"
                 />
                 <FormControlLabel
                   value="Draw Toolbar"
-                  control={<Radio />}
+                  control={<Radio color="info" />}
                   label="Draw Toolbar"
                 />
                 <FormControlLabel
                   value="Thematic Chart"
-                  control={<Radio />}
+                  control={<Radio color="info" />}
                   label="Thematic Chart"
                 />
               </RadioGroup>
@@ -143,8 +151,9 @@ const InputForm = () => {
             <Button
               type="submit"
               variant="contained"
-              color="primary"
+              color={"primary"}
               size="large"
+              fullWidth={false}
               disabled={!isValid || !dirty}
             >
               SUBMIT

@@ -4,6 +4,7 @@
 import Form from "@rjsf/material-ui";
 import { useLocation } from "react-router-dom";
 import React from "react";
+import { Box, Button } from "@material-ui/core";
 
 function SchemaForm() {
   const location = useLocation();
@@ -28,6 +29,10 @@ function SchemaForm() {
     <div className="Schema-Form">
       <Form schema={schemaData}>
         <div />
+        <Box height={14} />
+        <Button type="submit" variant="contained" color="primary" size="large">
+          SUBMIT
+        </Button>
       </Form>
     </div>
   );

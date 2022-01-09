@@ -19,13 +19,14 @@ code {
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  background-color: rgb(210, 226, 255);
+  background-color:#DCDCDC
+
 }
 
 .InputForm > form {
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: #FFF;
   padding: 32px;
   min-width: 350px;
   border-radius: 8px;
@@ -39,7 +40,7 @@ code {
   align-items: center;
   justify-content: center;
   min-width: 100px;
-  background-color: rgb(210, 226, 255);
+  background-color: #DCDCDC;
 
 }
 
@@ -48,7 +49,7 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
+  background-color: #FFF;
   padding: 30px;
   min-width: 100px;
   border-radius: 1px;
