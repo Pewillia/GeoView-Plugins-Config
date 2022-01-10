@@ -2,6 +2,8 @@
 
 GeoView Schema Form
 
+[Demo](https://geoview-plugins-config.herokuapp.com/)
+
 This application is build to get user input and render form using schema and submit configuration to AWS bucket, built with React, JavaScript,REST and CSS.
 
 ## Project Status

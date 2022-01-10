@@ -148,16 +148,17 @@ const InputForm = () => {
               </RadioGroup>
             </FormControl>
             <Box height={14} />
-            <Button
-              type="submit"
-              variant="contained"
-              color={"primary"}
-              size="large"
-              fullWidth={false}
-              disabled={!isValid || !dirty}
-            >
-              SUBMIT
-            </Button>
+            <div style={{ paddingLeft: 250 }}>
+              <Button
+                type="submit"
+                variant="contained"
+                color={"primary"}
+                size="large"
+                disabled={!isValid || !dirty}
+              >
+                SUBMIT
+              </Button>
+            </div>
           </Form>
         )}
       </Formik>
