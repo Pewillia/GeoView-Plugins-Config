@@ -5,7 +5,7 @@ some UUID to test it
 # 881867f4-7149-11ec-90d6-0242ac120003
 # b87924ac-72ec-11ec-90d6-0242ac120003
 
-[Demo](https://geoview-plugins-config.herokuapp.com/)
+[Demo](http://plugin-scema-template-deploybucket-1vj1hgukq0iz4.s3-website.ca-central-1.amazonaws.com/)
 
 This application is build to get user input and render form using schema and submit configuration to AWS bucket, built with React, JavaScript,REST and CSS.
 
