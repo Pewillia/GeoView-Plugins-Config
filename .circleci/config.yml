@@ -1,0 +1,22 @@
+version: 2.1
+
+jobs:
+  build:
+    machine:
+      image: ubuntu-1604:202007-01
+    resource_class: large
+    steps:
+      - checkout
+      - restore_cache:
+          key: node-v1-{{ .Branch }}-{{ checksum "package.json" }}
+      - run: npm install
+      - save_cache:
+          paths:
+            - ~/geoview-pluginform/node_modules
+          key: node-v1-{{ .Branch }}-{{ checksum "package.json" }}
+      - run: npm run build
+
+workflows:
+  build_project:
+    jobs:
+      - build

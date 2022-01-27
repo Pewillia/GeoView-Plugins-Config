@@ -16,14 +16,14 @@ import {
 import { Field, Form, Formik } from "formik";
 import { object, string } from "yup";
 import { useNavigate } from "react-router-dom";
-import api from "../api/api";
+//import api from "../api/api";
 
 const initialValues = {
   uuid: "",
   language: "",
   plugin: "",
 };
-
+/*
 async function getSchema(uuid, language, pluginType) {
   try {
     return await api.get("/plugins", {
@@ -37,6 +37,8 @@ async function getSchema(uuid, language, pluginType) {
     console.error(error);
   }
 }
+*/
+
 const InputForm = () => {
   let navigate = useNavigate();
   return (
@@ -49,13 +51,15 @@ const InputForm = () => {
           plugin: string().required("Please provide desired plugin"),
         })}
         onSubmit={(values, formikHelpers) => {
-          const schema = getSchema(values.uuid, values.language, values.plugin);
-          schema.then(function (response) {
-            navigate("/plugin", {
-              state: { data: response.data, desiredPlugin: values.plugin },
-            });
-            formikHelpers.resetForm();
+          //const schema = getSchema(values.uuid, values.language, values.plugin);
+          const jsonString = require("./db.json");
+          //const customer = JSON.parse(jsonString);
+          console.log(jsonString.plugins);
+
+          navigate("/plugin", {
+            state: { data: jsonString.plugins, desiredPlugin: values.plugin },
           });
+          formikHelpers.resetForm();
         }}
       >
         {({ values, setFieldValue, errors, isValid, touched, dirty }) => (

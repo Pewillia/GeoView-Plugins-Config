@@ -11,6 +11,7 @@ const onSubmit = ({ formData }) => alert("Data submitted: ", formData);
 function SchemaForm() {
   const location = useLocation();
   let dataObject = location.state.data;
+  console.log(dataObject);
   let jsonObject = JSON.stringify(dataObject);
   let schemaData = JSON.parse(jsonObject);
 
