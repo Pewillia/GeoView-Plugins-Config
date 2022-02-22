@@ -29,13 +29,9 @@ Clone down this repository.
 You will need `node` and `npm` installed globally on your machine.
 
 Installation:
-
 `npm install`
-`npm install -g json-server`
 
 To Start Application:
-
-`npx json-server -p 3500 -w data/db.json `
 `npm start`
 
 To Visit App:
