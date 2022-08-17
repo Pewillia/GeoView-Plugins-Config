@@ -23,6 +23,16 @@ function SchemaForm() {
     schemaData = dataObject[0].rangeSlider;
   } else if (desiredSchema === "Chart") {
     schemaData = schemaData[0].chart;
+  } else if (desiredSchema === "language") {
+    schemaData = schemaData[0].language;
+  } else if (desiredSchema === "version") {
+    schemaData = schemaData[0].version;
+  } else if (desiredSchema === "Ui") {
+    schemaData = schemaData[0].Ui;
+  } else if (desiredSchema === "Map") {
+    schemaData = schemaData[0].Map;
+  } else if (desiredSchema === "Services") {
+    schemaData = schemaData[0].Services;
   } else if (desiredSchema === "Swiper") {
     schemaData = schemaData[0].swiper;
   } else if (desiredSchema === "Draw Toolbar") {

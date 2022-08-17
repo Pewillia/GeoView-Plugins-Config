@@ -145,10 +145,33 @@ const InputForm = () => {
                   label="Draw Toolbar"
                 />
                 <FormControlLabel
-                  value="Thematic Chart"
+                  value="language"
                   control={<Radio color="info" />}
-                  label="Thematic Chart"
+                  label="language"
                 />
+                 <FormControlLabel
+                  value="version"
+                  control={<Radio color="info" />}
+                  label="version"
+                />
+                <FormControlLabel
+                  value="Services"
+                  control={<Radio color="info" />}
+                  label="Services"
+                />
+                 <FormControlLabel
+                  value="Ui"
+                  control={<Radio color="info" />}
+                  label="Ui"
+                />
+                 <FormControlLabel
+                  value="Map"
+                  control={<Radio color="info" />}
+                  label="Map"
+                />
+                
+
+
               </RadioGroup>
             </FormControl>
             <Box height={14} />
