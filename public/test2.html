@@ -26,29 +26,55 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>NRCn Internal Application</title>
-    <script src="https://canadian-geospatial-platform.github.io/geoview/cgpv-main.js"></script>    
+    <script src="https://canadian-geospatial-platform.github.io/geoview/cgpv-main.js"></script>
   </head>
     <!-- <body id = "body" onload="cgpv.init()">>-->
 <body id = "body" >
   
     <div id="root"></div>
-<div
-  id="mapTwo"
+ <div
+  id="mapOne"
+  class="llwp-map"
+  style="height: 100vh;"
+  data-lang="en"
+  data-config="{
+      'map': {
+        'interaction': 'dynamic',
+        'viewSettings': {
+          'zoom': 4,
+          'center': [60, -100],
+          'projection': 3978
+        },
+        'basemapOptions': {
+          'basemapId': 'transport',
+          'shaded': true,
+          'labeled': true
+        },
+           'listOfGeoviewLayerConfig': [
+                        {          
+                         'geoviewLayerId': 'esriDynamicLYR2',
+                          'geoviewLayerName': {
+                            'en': Energy',
+                            'fr': 'Energy'
+                          },
+                          'metadataAccessPath': {
+                            'en': 'https://maps-cartes.ec.gc.ca/arcgis/rest/services/CESI/MapServer',
+                            'fr': 'https://maps-cartes.ec.gc.ca/arcgis/rest/services/CESI/MapServer'
+                          },
+                          'geoviewLayerType': 'esriDynamic',
+                          'listOfLayerEntryConfig': [{ 'layerId': '0' }, { 'layerId': '6' }]
+                        }
+                      ]
+      },
+      'theme': 'dark',
+      'components': ['app-bar', 'nav-bar', 'north-arrow'],
+      'corePackages': [],
+      'suportedLanguages': ['en']
+    }"
 ></div>
 <script>
    cgpv.init(function () {});
-   
 </script>
-<!-- The `multiple` attribute lets users select multiple files. -->
-<!--<input type="file" id="file-selector" multiple>
-<script>
-  const fileSelector = document.getElementById('file-selector');
-  fileSelector.addEventListener('change', (event) => {
-    const fileList = event.target.files;
-    console.log(fileList);
-  });
-</script> -->
-   <!-- <button onclick=cgpv.init()>Draw Map</button>   -->
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

@@ -5,17 +5,17 @@ env:
   node: true
 extends:
   - eslint:recommended
-  - plugin:react/recommended
-  - plugin:prettier/recommended
+ # - plugin:react/recommended
+ # - plugin:prettier/recommended
 parserOptions:
   ecmaFeatures:
     jsx: true
   ecmaVersion: "latest"
   sourceType: module
-plugins:
-  - react
-  - prettier
+#plugins:
+#  - react
+#  - prettier
 rules:
   react/react-in-jsx-scope: off
-  prettier/prettier: error
+ # prettier/prettier: error
 

@@ -2,27 +2,28 @@
  * @author Vijendra Yadav <Vijendra.Yadav@nrcan-rncan.gc.ca >
  */
 
-import {
-  Box,
-  Button,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  TextField,
-  Typography,
-} from "@material-ui/core";
+import { Box,Button,FormControl,FormControlLabel,FormLabel,Radio,RadioGroup,TextField,Typography,
+ } from "@material-ui/core";
 import { Field, Form, Formik } from "formik";
 import { object, string } from "yup";
 import { useNavigate } from "react-router-dom";
+
 //import api from "../api/api";
 
 const initialValues = {
   uuid: "",
   language: "",
   plugin: "",
+  type: "string",
+  format: "data-url",
+   
 };
+
+//const uiSchema = {
+//  "ui:widget": "file",
+//};
+
+
 /*
 async function getSchema(uuid, language, pluginType) {
   try {
@@ -54,8 +55,11 @@ const InputForm = () => {
           //const schema = getSchema(values.uuid, values.language, values.plugin);
           const jsonString = require("./db.json");
           //const customer = JSON.parse(jsonString);
-          console.log(jsonString.plugins);
+          console.log('json string-',jsonString.plugins);
 
+//          navigate("/plugin", {
+//            state: { data: jsonString.plugins, desiredPlugin: values.plugin },
+//          });
           navigate("/plugin", {
             state: { data: jsonString.plugins, desiredPlugin: values.plugin },
           });
@@ -84,6 +88,7 @@ const InputForm = () => {
               error={Boolean(errors.uuid) && Boolean(touched.uuid)}
               helperText={Boolean(touched.uuid) && errors.uuid}
             />
+            
 
             <Box height={14} />
 
@@ -140,38 +145,21 @@ const InputForm = () => {
                   label="Swiper"
                 />
                 <FormControlLabel
+                  value="thematicslider"
+                  control={<Radio color="info" />}
+                  label="Thematic Slider"
+                />
+                <FormControlLabel
                   value="Draw Toolbar"
                   control={<Radio color="info" />}
                   label="Draw Toolbar"
                 />
-                <FormControlLabel
-                  value="language"
-                  control={<Radio color="info" />}
-                  label="language"
-                />
                  <FormControlLabel
-                  value="version"
+                  value="map"
                   control={<Radio color="info" />}
-                  label="version"
+                  label="Geoview map"
                 />
-                <FormControlLabel
-                  value="Services"
-                  control={<Radio color="info" />}
-                  label="Services"
-                />
-                 <FormControlLabel
-                  value="Ui"
-                  control={<Radio color="info" />}
-                  label="Ui"
-                />
-                 <FormControlLabel
-                  value="Map"
-                  control={<Radio color="info" />}
-                  label="Map"
-                />
-                
-
-
+            
               </RadioGroup>
             </FormControl>
             <Box height={14} />
@@ -192,5 +180,62 @@ const InputForm = () => {
     </div>
   );
 };
+
+//function processFile(files) {
+ // const f = files[0];
+  //return new Promise((resolve, reject) => {
+   // const reader = new FileReader();
+    //reader.onload = (event) => resolve(event.target.result);
+   // reader.readAsDataURL(f);
+ // });
+//}
+
+//const FileWidget = (props) => {
+ // return (
+  //  <input type="file"
+   //   required={props.required}
+    //  onChange={(event) => processFile(event.target.files).then(props.onChange)} />
+ // )
+//};
+
+//const schema = {
+  //type: 'object',
+ // required: ['name'],
+  //properties: {
+   // name: { type: 'string', title: 'Name', default: '' },
+    //file: { type: 'string', title: 'File' }
+ // }
+//}
+//const uiSchema = {
+ // file: {
+  //  'ui:widget': FileWidget
+ // }//
+//}
+
+//class App extends React.Component {
+  //constructor(props) {
+  //  super(props);
+  //  this.state = {formData: {}};
+ // }
+  //onSubmit({formData}) {
+    //this.setState({formData});
+ // }
+ // render() {
+//    return (
+ //     <div>
+  //      <Form 
+  //        schema={schema} 
+  //        uiSchema={uiSchema}
+ //         onSubmit={this.onSubmit.bind(this)}
+  //        liveValidate />
+// //       <h4>Submitted file as data URL</h4>
+  //      <pre>{this.state.formData.file}</pre>
+  //    </div>
+ //   );
+//  }
+//}
+//
+//React.render(<App />,
+  //document.getElementById("main")
 
 export default InputForm;

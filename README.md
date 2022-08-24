@@ -38,5 +38,39 @@ To Visit App:
 
 `http://localhost:3000/`
 
+## How to Deploy to Github ##
+
+add to package.json the following  "homepage": "https://{githubusername}}.github.io/GeoView-Plugins-Config",
+
+also have to add to App.js 
+    <Router basename={process.env.PUBLIC_URL}>
+
+## ESLint config to avoid Errors ## 
+
+ERROR in Plugin "react" was conflicted between ".eslintrc.json" and "BaseConfig" 
+
+THe following  Eslintrc.yml config avoids above error.
+
+    env:
+  browser: true
+  es2021: true
+  es6: true
+  node: true
+extends:
+  - eslint:recommended
+ # - plugin:react/recommended
+ # - plugin:prettier/recommended
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: "latest"
+  sourceType: module
+#plugins:
+#  - react
+#  - prettier
+rules:
+  react/react-in-jsx-scope: off
+ # prettier/prettier: error
+
 ## Reflection
 

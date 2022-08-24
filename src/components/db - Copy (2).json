@@ -950,80 +950,31 @@
       "required": ["color", "width"]
     },
 
- "TypeLineStringVectorConfig": {
- 
-      "type": "object",
-      "properties": {
-        "type": {
-          "enum": ["lineString"]
-        },
-        "stroke": { "$ref": "#/definitions/TypeStrokeSymbolConfig" }
-      },
-      "required": ["type", "stroke"]
-    },
-
-    "TypePolygonVectorConfig": {
-      
-      "type": "object",
-      "properties": {
-        "type": {
-          "enum": ["filledPolygon"]
-        },
-        "color": { "type": "string" },
-        "stroke": { "$ref": "#/definitions/TypeStrokeSymbolConfig" },
-        "paternSize": {
-          "type": "number",
-          "description": "Distance between patern lines. Default = 8"
-        },
-        "paternWidth": {
-          "type": "number",
-          "description": "Patern line width.default = 1."
-        },
-        "fillStyle": {
-          "enum": ["solid", "backwardDiagonal", "cross", "diagonalCross", "forwardDiagonal", "horizontal", "null", "vertical"],
-          "description": "Kind of filling  for vector features. Default = solid. "
-        }
-      },
-      "required": ["type", "stroke"]
-    },
-
     "TypeSimpleSymbolVectorConfig": {
-   
+
       "type": "object",
       "properties": {
-        "type": {
-          "enum": ["simpleSymbol"]
-        },
-        "rotation": {
-          "type": "number",
-          "description": "Symbol rotation in radians."
-        },
-        "color": { "type": "string" },
+        "fill": { "$ref": "#/definitions/TypeFillSymbolConfig" },
         "stroke": { "$ref": "#/definitions/TypeStrokeSymbolConfig" },
-        "size": { "type": "number" },
-        "offset": {
-          "type": "array",
-          "items": {
-            "type": "number"
-          },
-          "minItems": 2,
-          "maxItems": 2
-        },
-        "symbol": {
-          "enum": ["circle", "+", "diamond", "square", "triangle", "X", "star"]
-        }
+        "radius": { "type": "number" }
+      }
+    },
+
+    "TypeCircleSymbolVectorConfig": {
+
+      "type": "object",
+      "properties": {
+        "fill": { "$ref": "#/definitions/TypeFillSymbolConfig" },
+        "stroke": { "$ref": "#/definitions/TypeStrokeSymbolConfig" },
+        "radius": { "type": "number" }
       },
-      "required": ["type", "symbol"]
+      "required": ["radius"]
     },
 
     "TypeIconSymbolVectorConfig": {
-    
+
       "type": "object",
       "properties": {
-        "type": {
-          "enum": ["iconSymbol"]
-        },
-        "mimeType": { "type": "string" },
         "src": { "type": "string" },
         "width": {
           "type": "integer",
@@ -1043,27 +994,19 @@
           "maximum": 1,
           "default": 1
         },
-        "offset": {
-          "type": "array",
-          "items": {
-            "type": "number"
-          },
-          "minItems": 2,
-          "maxItems": 2
-        },
         "crossOrigin": {
           "type": "string",
           "description": "The crossOrigin attribute for loaded images. Note that you must provide a crossOrigin value if you want to access pixel data with the Canvas renderer."
         }
       },
-      "required": ["type", "mimeType", "src"]
+      "required": ["src", "width", "height", "rotation", "opacity"]
     },
 
-   "TypeSimpleStyleConfig": {
-      "additionalProperties": false,
+    "TypeSimpleStyleConfig": {
+    
       "type": "object",
       "properties": {
-        "styleId": {
+        "id": {
           "type": "string"
         },
         "styleType": {
@@ -1072,29 +1015,23 @@
         "label": {
           "type": "string"
         },
-        "settings": { "$ref": "#/definitions/TypeKindOfVectorSettings" }
+        "options": { "$ref": "#/definitions/TypeKinfOfSymbolVectorSettings" }
       },
-      "required": ["styleType", "label", "settings"]
+      "required": ["styleType", "label", "options"]
     },
 
+    "TypeUniqueValueStyleConfig": {
 
-     "TypeUniqueValueStyleConfig": {
-     
       "type": "object",
       "properties": {
-        "styleId": {
+        "id": {
           "type": "string"
         },
         "styleType": {
           "enum": ["uniqueValue"]
         },
-        "defaultLabel": {
-          "type": "string",
-          "description": "Label used if field/value association is not found."
-        },
-        "defaultSettings": {
-          "$ref": "#/definitions/TypeKindOfVectorSettings",
-          "description": "Settings used if field/value association is not found."
+        "label": {
+          "type": "string"
         },
         "fields": {
           "type": "array",
@@ -1105,91 +1042,74 @@
         },
         "uniqueValueStyleInfo": { "$ref": "#/definitions/TypeUniqueValueStyleInfo" }
       },
-      "required": ["styleType", "fields", "uniqueValueStyleInfo"]
+      "required": ["styleType", "label", "fields", "uniqueValueStyleInfo"]
     },
 
     "TypeUniqueValueStyleInfo": {
       "type": "array",
-         "minItems": 2,
+       "minItems": 2,
       "items": {
-         " type": "object",
-    "properties": {
         "label": {
           "type": "string"
         },
         "values": {
           "type": "array",
-                "minItems": 1,
+            "minItems": 1,
           "items": {
             "type": "string"
           }
-    
         },
-        "settings": { "$ref": "#/definitions/TypeKindOfVectorSettings" }
+        "options": { "$ref": "#/definitions/TypeKinfOfSymbolVectorSettings" }
       },
-   
-      "required": ["label", "values", "settings"]
-      }
+      "required": ["label", "values", "options"]
     },
 
-  "TypeClassBreakStyleConfig": {
-
+    "TypeClassBreakStyleConfig": {
+     
       "type": "object",
       "properties": {
-        "styleId": {
+        "id": {
           "type": "string"
         },
         "styleType": {
-          "enum": ["classBreaks"]
+          "enum": ["classBreak"]
         },
-        "defaultLabel": {
-          "type": "string",
-          "description": "Label used if field/value association is not found."
-        },
-        "defaultSettings": {
-          "$ref": "#/definitions/TypeKindOfVectorSettings",
-          "description": "Settings used if field/value association is not found."
+        "label": {
+          "type": "string"
         },
         "field": {
           "type": "string"
         },
-        "classBreakStyleInfos": { "$ref": "#/definitions/TypeClassBreakStyleInfo" }
+        "classBreakStyleInfo": { "$ref": "#/definitions/TypeClassBreakStyleInfo" }
       },
       "required": ["styleType", "label", "field", "classBreakStyleInfo"]
     },
 
+    "TypeClassBreakStyleInfo": {
 
-      "TypeClassBreakStyleInfo": {
-      "additionalProperties": false,
       "type": "array",
-  
-      "items": { 
-        " type": "object",
-            "properties": {
-
+      "items": {
+     
         "label": {
           "type": "string"
         },
-        "minValue": {
+        "minValues": {
           "type": "number"
         },
-        "maxValue": {
+        "maxValues": {
           "type": "number"
         },
-        "settings": { "$ref": "#/definitions/TypeKindOfVectorSettings" }
-       }
-       },
+        "options": { "$ref": "#/definitions/TypeKinfOfSymbolVectorSettings" }
+      },
       "minItems": 2,
-      "required": ["label", "minValue", "maxValue", "settings"]
-    
+      "required": ["label", "minValue", "maxValue", "options"]
     },
 
-    "TypeKindOfVectorSettings": {
+    "TypeKinfOfSymbolVectorSettings": {
       "anyOf": [
-        { "title":"LineString","$ref": "#/definitions/TypeLineStringVectorConfig" },
-        {"title":"Polygon", "$ref": "#/definitions/TypePolygonVectorConfig" },
-        {"title":"SimpleSymbol", "$ref": "#/definitions/TypeSimpleSymbolVectorConfig" },
-         {"title":"IconSymbol", "$ref": "#/definitions/TypeIconSymbolVectorConfig" }
+        { "title":"SimpleSymbol","$ref": "#/definitions/TypeSimpleSymbolVectorConfig" },
+        { "title":"CircleSymbol","$ref": "#/definitions/TypeCircleSymbolVectorConfig" },
+        {"title":"IconSymbol", "$ref": "#/definitions/TypeIconSymbolVectorConfig" }
       ]
     },
 
@@ -1275,7 +1195,6 @@
       "properties": {
         "enable": {
           "type": "boolean",
-          "title": "Cluster vector data on vector layer. Default = false",
           "default": false
         },
         "distance": {
@@ -1449,7 +1368,7 @@
      
       "type": "object",
       "properties": {
-        "entryType": { "enum": ["vector"],"default":"vector"},
+        "entryType": { "enum": ["vector"] },
         "layerId": {
           "type": "string",
           "description": "The id of the layer to display on the map."
@@ -1493,7 +1412,7 @@
 
       "type": "object",
       "properties": {
-        "entryType": { "enum": ["vector"] ,"default":"vector"},
+        "entryType": { "enum": ["vector"] },
         "layerId": {
           "type": "string",
           "description": "The id of the layer to display on the map."
@@ -1517,7 +1436,7 @@
       "type": "object",
       "description": "Layer sources providing vector data divided into a tile grid.",
       "properties": {
-        "entryType": { "enum": ["vector"],"default":"vector" },
+        "entryType": { "enum": ["vector"] },
         "layerId": {
           "type": "string",
           "description": "The id of the layer to display on the map."
@@ -1621,7 +1540,7 @@
       
       "type": "object",
       "properties": {
-        "entryType": { "enum": ["raster"] ,"default":"raster"},
+        "entryType": { "enum": ["raster"] },
         "layerId": {
           "type": "string",
           "description": "The id of the layer to display on the map."
@@ -1643,7 +1562,7 @@
 
       "type": "object",
       "properties": {
-        "entryType": { "enum": ["raster"] ,"default":"raster"},
+        "entryType": { "enum": ["raster"] },
         "layerId": {
           "type": "string",
           "description": "The id of the layer to display on the map."
@@ -1666,7 +1585,7 @@
       "type": "object",
       "description": "Layer where configration is extracted by a configuration snippet stored on a server. The server configuration will handle bilangual informations.",
       "properties": {
-        "entryType": { "enum": ["geocore"], "default":"geocore" },
+        "entryType": { "enum": ["geocore"] },
         "layerId": {
           "type": "string",
           "description": "The id of the layer to display on the map."
@@ -1702,7 +1621,7 @@
       "type": "object",
       "description": "Entry used to define a layer Group.",
       "properties": {
-        "entryType": { "enum": ["group"], "default":"group"},
+        "entryType": { "enum": ["group"] },
         "layerId": {
           "type": "string",
           "description": "The id of the layer group to display on the map."
@@ -1781,7 +1700,6 @@
     },
 
     "TypeBasemapId": {
-
       "enum": ["transport", "osm", "simple", "nogeom", "shaded"],
       "default": "transport",
       "description": "Id of the basemap to use."
@@ -1852,8 +1770,14 @@
           "ogcWfs",
           "ogcWms"
         ]
-      },"defaut":[ "esriDynamic"
-         ],
+      },"defaut":[ "esriDynamic",
+          "esriFeature",
+          "GeoJSON",
+          "geoCore",
+          "xyzTiles",
+          "ogcFeature",
+          "ogcWfs",
+          "ogcWms"],
        "minItems": 1,
       "description": "Type of GeoView layer."
     },
@@ -1961,9 +1885,9 @@
       "type": "array",
       "uniqueItems": true,
       "items": {
-        "enum": ["app-bar", "nav-bar", "overview-map", "north-arrow"]
+        "enum": ["appbar", "navbar", "overview-map", "north-arrow"]
       },
-      "default": ["app-bar", "nav-bar", "overview-map", "north-arrow"],
+      "default": ["appbar", "navbar", "overview-map", "north-arrow"],
       "description": "Core components to initialize on viewer load. The schema for those are inside this file.",
       "minItems": 0
     },

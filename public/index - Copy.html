@@ -33,22 +33,48 @@
   
     <div id="root"></div>
 <div
-  id="mapTwo"
+  id="mapOne"
+  class="llwp-map"
+  style="height: 200vh;"
+  data-lang="en"
+  data-config="{
+      'map': {
+        'interaction': 'dynamic',
+        'viewSettings': {
+          'zoom': 4,
+          'center': [-100, 60],
+          'projection': 3978
+        },
+        'basemapOptions': {
+          'basemapId': 'transport',
+          'shaded': true,
+          'labeled': true
+        },
+           'listOfGeoviewLayerConfig': [
+                        {          
+                         'geoviewLayerId': 'esriDynamicLYR2',
+                          'geoviewLayerName': {
+                            'en': 'Energy',
+                            'fr': 'Energy'
+                          },
+                           'metadataAccessPath': {
+                            'en': 'https://maps-cartes.ec.gc.ca/arcgis/rest/services/CESI/MapServer',
+                            'fr': 'https://maps-cartes.ec.gc.ca/arcgis/rest/services/CESI/MapServer'
+                          },
+                          'geoviewLayerType': 'esriDynamic',
+                          'listOfLayerEntryConfig': [{ 'layerId': '0' }, { 'layerId': '6' }]
+                        }
+                      ]
+      },
+      'theme': 'dark',
+      'components': ['app-bar', 'nav-bar', 'north-arrow','overview-map'],
+      'suportedLanguages': ['en']
+    }"
 ></div>
 <script>
    cgpv.init(function () {});
-   
 </script>
-<!-- The `multiple` attribute lets users select multiple files. -->
-<!--<input type="file" id="file-selector" multiple>
-<script>
-  const fileSelector = document.getElementById('file-selector');
-  fileSelector.addEventListener('change', (event) => {
-    const fileList = event.target.files;
-    console.log(fileList);
-  });
-</script> -->
-   <!-- <button onclick=cgpv.init()>Draw Map</button>   -->
+ <button onclick=cgpv.init()>Display Map</button>    
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
