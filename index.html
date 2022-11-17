@@ -1,1 +1,33 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="/GeoView-Plugins-Config/logo192.png"/><link rel="manifest" href="manifest.json"/><title>NRCan Internal Application</title><script defer="defer" src="/GeoView-Plugins-Config/static/js/main.109f1e68.js"></script><link href="/GeoView-Plugins-Config/static/css/main.22a364e2.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
+<!doctype html><html lang="en"><head id="head"><meta charset="utf-8"/><link rel="icon" href="favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="/GeoView-Plugins-Config/logo192.png"/><title>NRCn Internal Application</title><script src="https://canadian-geospatial-platform.github.io/geoview/cgpv-main.js"></script><script defer="defer" src="/GeoView-Plugins-Config/static/js/main.af145cd4.js"></script><link href="/GeoView-Plugins-Config/static/css/main.22a364e2.css" rel="stylesheet"></head><body id="body"><div id="root"></div><div id="mapOne" class="llwp-map" style="height:100vh" data-lang="en" data-config="{
+      'map': {
+        'interaction': 'dynamic',
+        'viewSettings': {
+          'zoom': 4,
+          'center': [60, -100],
+          'projection': 3978
+        },
+        'basemapOptions': {
+          'basemapId': 'transport',
+          'shaded': true,
+          'labeled': true
+        },
+           'listOfGeoviewLayerConfig': [
+                        {          
+                         'geoviewLayerId': 'esriDynamicLYR2',
+                          'geoviewLayerName': {
+                            'en': Energy',
+                            'fr': 'Energy'
+                          },
+                          'metadataAccessPath': {
+                            'en': 'https://maps-cartes.ec.gc.ca/arcgis/rest/services/CESI/MapServer',
+                            'fr': 'https://maps-cartes.ec.gc.ca/arcgis/rest/services/CESI/MapServer'
+                          },
+                          'geoviewLayerType': 'esriDynamic',
+                          'listOfLayerEntryConfig': [{ 'layerId': '0' }, { 'layerId': '6' }]
+                        }
+                      ]
+      },
+      'theme': 'dark',
+      'components': ['app-bar', 'nav-bar', 'north-arrow'],
+      'suportedLanguages': ['en']
+    }"></div><script>cgpv.init((function(){}))</script><button onclick="cgpv.init()">Display Map</button></body></html>
