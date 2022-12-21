@@ -1,0 +1,112 @@
+{
+   "theme":"dark",
+   "navBar":[
+      "zoom",
+      "fullscreen",
+      "home"
+   ],
+   "components":[
+     
+   ],
+   "corePackages":[
+      
+   ],
+   "externalPackages":[
+      
+   ],
+   "map":{
+      "basemapOptions":{
+         "basemapId":"transport",
+         "shaded":true,
+         "labeled":true
+      },
+      "interaction":"dynamic",
+      "listOfGeoviewLayerConfig":[
+         {
+            "geoviewLayerType":"ogcWms",
+            "listOfLayerEntryConfig":[
+               {
+                  "entryType":"raster-image3",
+                  "schemaTag":"ogcWms",
+                  "layerId":"CURRENT_CONDITIONS",
+                  "layerName":{
+                     "en":"met3"
+                  },
+                  "source":{
+                     "dataAccessPath":{
+                        "en":"https://geo.weather.gc.ca/geomet"
+                     },
+                     "featureInfo":{
+                      
+                        "nameField":{
+                           "en":"plain_text"
+                        },
+                        "outfields":{
+                           "en":"plain_text"
+                        },
+                        "aliasFields":{
+                           "en":"Forecast"
+                        },
+                        "queryable":true
+                     }
+                  },
+                  "style":{
+                     "LineString":{
+                        "styleId":"1",
+                        "styleType":"simple",
+                        "label":"1",
+                        "settings":{
+                           "type":"lineString",
+                           "stroke":{
+                              "color":"#231f1f",
+                              "lineStyle":"dash",
+                              "width":1
+                           }
+                        }
+                     },
+                     "Point":{
+                        "styleId":"1",
+                        "styleType":"simple",
+                        "label":"1",
+                        "settings":{
+                           "type":"lineString",
+                           "stroke":{
+                              "color":"#c11a1a",
+                              "lineStyle":"dash",
+                              "width":1
+                           }
+                        }
+                     },
+                     "Polygon":{
+                        "styleId":"1",
+                        "styleType":"simple",
+                        "label":"1",
+                        "settings":{
+                           "type":"lineString",
+                           "stroke":{
+                              "color":"#b42d2d",
+                              "lineStyle":"dash-dot",
+                              "width":1
+                           }
+                        }
+                     }
+                  }
+               }
+            ],
+            "geoviewLayerId":"wmsLYR1-Root",
+            "geoviewLayerName":{
+               "en":"met"
+            },
+            "metadataAccessPath":{
+               "en":"https://geo.weather.gc.ca/geomet"
+            }
+         }
+      ],
+     "viewSettings": {
+      "initialView": {
+        "zoomAndCenter": [12, [45, 75]]
+      },
+      "projection": 3978
+    }
+   }
+}

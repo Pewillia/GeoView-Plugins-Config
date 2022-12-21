@@ -1,0 +1,37 @@
+{
+   "map":{
+      "basemapOptions":{
+         "shaded":true,
+         "labeled":true,
+         "basemapId":"transport"
+      },
+      "interaction":"dynamic",
+      "listOfGeoviewLayerConfig":[
+         {
+            "geoviewLayerType":"geoCore",
+            "geoviewLayerName":{
+               "en":"AireborneRadiation"
+            },
+            "geoviewLayerId":"21b821cf-0f1c-40ee-8925-eab12d357668",
+            "initialSettings":{
+               "controls":{
+                  "highlight":true,
+                  "hover":true,
+                  "opacity":true,
+                  "query":true,
+                  "remove":true,
+                  "table":true,
+                  "visibility":true,
+                  "zoom":true
+               },
+               "states":{
+                  "visible":true,
+                  "opacity":1
+               }
+            }
+         }
+      ],
+      
+      "highlightColor":"black"
+   }
+}

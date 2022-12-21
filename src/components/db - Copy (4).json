@@ -4,7 +4,7 @@
 
     {  "draw": {  
      
-        "title": "Draw ",
+        "title": "Draw",
          
         
 
@@ -17,6 +17,7 @@
             "default":true
           },
           "open": { 
+         
             "type": "boolean",
             "title": "Open by default",
             "default": true
@@ -27,7 +28,6 @@
             "minItems":0,
             "uniqueItems": true,
             "items":{
-              "type":"string",
               "enum": [
                 "picker",
                 "point",
@@ -40,6 +40,7 @@
                 "read"
               ]
             },
+          
           
             "description": "Tools to add to draw toolbar.",
             "default": [
@@ -710,7 +711,7 @@
           "default": true,
           "title": "Allow querying. Default = true."
         },
-      
+        "customParser": { "$ref": "#/definitions/TypeDetailsLayerConfig" },
         "nameField": {
           "$ref": "#/definitions/TypeLocalizedString",
           "description": "The display field (English/French) of the layer. If it is not present the viewer will make an attempt to find the first valid field."
@@ -1278,33 +1279,28 @@
     
       "type": "object",
       "properties": {
-        
+        "visible": {
+          "type": "boolean",
+          "default": true,
+          "description": "Initial visibility setting."
+        },
         "hoverable": {
           "type": "boolean",
-          "description": "hoverable."
+          "description": "Layer is hoverable."
         },
-        "legendCollapsed": {
-        "description": "legend initially collapsed.",
-        "type": "boolean"
-        },         
+        "queryable": {
+          "type": "boolean",
+          "description": "Layer is queryable."
+        },
         "opacity": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
           "default": 1,
           "description": "Initial opacity setting."
-        },
-        "queryable": {
-          "type": "boolean",
-          "description": "layer queryable."
-        },
-        "visible": {
-          "type": "boolean",
-          "default": true,
-          "description": "Initial visibility setting."
         }
       },
-      "description": "UI controls available."
+      "description": "Which UI controls are available."
     },
 
     "TypeLayerInitialSettings": {
@@ -1867,6 +1863,44 @@
 
 
 
+    "TypeGeocoreLayerEntryConfig": {
+      
+      "type": "object",
+      "description": "Layer where configration is extracted by a configuration snippet stored on a server. The server configuration will handle bilangual informations.",
+      "properties": {
+           "entryType": {
+          "type": "string",
+          "enum": [
+            "geocore"
+          ],
+          "default": "geocore"
+       },
+        "layerId": {
+          "type": "string",
+          "description": "The id of the layer to display on the map."
+        },
+        "geocoreLayerName": {
+          "$ref": "#/definitions/TypeLocalizedString",
+          "description": "The display name of the layer (English/French). If it is not present the viewer will make an attempt to scrape this information."
+        },
+        "initialSettings": {
+        "$ref": "#/definitions/TypeLayerInitialSettings",
+        "description": "Initial settings to apply to the layer entry at creation time. Initial settings are inherited from the parent in the configuration tree."
+        },       
+        "listOfLayerEntryConfig": {
+        "$ref": "#/definitions/TypeListOfLayerEntryConfig",
+        "description": "The list of layer entry configurations to use from the GeoView layer group."
+        },
+        "schemaTag": {
+              "enum": [
+                    "geoCore"
+                    ],
+                    "defaut":  "geoCore"
+        },
+        "source": { "$ref": "#/definitions/TypeSourceGeocoreConfig" }
+      },
+      "required": ["schemaTag","entryType","layerId"]
+    },
 
     "TypeSourceGeocoreConfig": {
     
@@ -2124,13 +2158,22 @@
 
     "TypeBasemapId": { 
       "description": "Id of the basemap to use." ,
-      "enum": ["transport", "osm", "simple", "nogeom", "shaded","imagery"],
+      "enum": ["transport", "osm", "simple", "nogeom", "shaded"],
       "default": "transport"
       
     },
 
-   
+    "TypeInteraction": { 
+      "enum": ["static", "dynamic"],
+      "default": "dynamic",
+      "description": "If map is dynamic (pan/zoom) or static to act as a thumbnail (no nav bar)."
+    },
     
+     "TypeHighlightColors": {
+      "enum": ["black", "white", "red", "green"],
+      "default": "black",
+      "description": "Color to use for feature highlights."
+    },
 
     "TypeListOfGeoviewLayerConfig": {
      
@@ -2154,10 +2197,6 @@
     
       "type": "object",
       "properties": {
-        "externalDateFormat": {
-          "description": "Date format used by the getFeatureInfo to output date variable.",
-          "type": "string"
-        },
           "geoviewLayerId": {
           "description": "The id of the layer for referencing within the viewer (does not relate directly to any external service). The id will have the language extension (id-'lang').",
           "type": "string"
@@ -2166,15 +2205,19 @@
           "$ref": "#/definitions/TypeLocalizedString",
           "description": "The display name of the layer (English/French). If it is not present the viewer will make an attempt to scrape this information."
         },
-       
+        "metadataAccessPath": {
+          "$ref": "#/definitions/TypeLocalizedString",
+          "description": "The GeoView layer access path (English/French)."
+         },
         "geoviewLayerType":  {
          "type": "string",
         
-         "enum": [   "CSV",
+        "enum": [   "CSV",
                     "esriDynamic",
                     "esriFeature",
                     "esriImage",
                     "GeoJSON",
+                    "geoCore1",
                     "GeoPackage",
                     "xyzTiles",
                     "ogcFeature",
@@ -2186,26 +2229,22 @@
         "default": [
           ""],
           "description": "Type of GeoView layer."
-        },    
+        },
+        "serviceDateFormat": {
+         "description": "Date format used by the service endpoint.",
+         "type": "string"
+        },
+        "externalDateFormat": {
+          "description": "Date format used by the getFeatureInfo to output date variable.",
+          "type": "string"
+        },
         "initialSettings": {
           "$ref": "#/definitions/TypeLayerInitialSettings",
           "description": "Initial settings to apply to the GeoView layer at creation time."
         },
-         "isTimeAware": {
-                    "description": "Flag to mention if layer will use its time dimension if provided. Used to remove a layer from time enabled functions like time slider.",
-                    "type": "boolean"
-        },
         "listOfLayerEntryConfig": {
           "$ref": "#/definitions/TypeListOfLayerEntryConfig",
           "description": "The layer entries to use from the GeoView layer."
-        },
-         "metadataAccessPath": {
-          "$ref": "#/definitions/TypeLocalizedString",
-          "description": "The GeoView layer access path (English/French)."
-         },
-        "serviceDateFormat": {
-         "description": "Date format used by the service endpoint.",
-         "type": "string"
         }
       },
       "required": [
@@ -2215,13 +2254,6 @@
           "geoviewLayerName",
            "metadataAccessPath"
       ]
-    },
-
-
-     "TypeHighlightColors": {
-      "enum": ["black", "white", "red", "green"],
-      "default": "black",
-      "description": "Color to use for feature highlights."
     },
 
      "TypeGeoCoreLayerConfig": {
@@ -2234,30 +2266,25 @@
         },
         "geoviewLayerType": {
           "type": "string",
-          "enum": ["geoCore"] ,
-          "default": ["geoCore"],
-          "description": "Type of GeoCore layer."
-        },
+     
+        "enum": ["geoCore"] ,
+    
+        "default": ["geoCore"],
+       
+      "description": "Type of GeoCore layer."
+    },
+         
+        
         "geoviewLayerName": {
           "$ref": "#/definitions/TypeLocalizedString",
           "description": "The display name of the layer (English/French). If it is not present the viewer will make an attempt to scrape this information."
         },
         "initialSettings": {
           "$ref": "#/definitions/TypeLayerInitialSettings",
-          "description": "Initial settings to apply to the GeoCore layer at creation time."
+          "description": "Initial settings to apply to the GeoView layer at creation time."
         }
       },
       "required": ["geoviewLayerId", "geoviewLayerType"]
-    },
-
-    "TypeGeoCoreLayerType": {
-      "type": "string",
-      "items": {
-        "enum": ["geoCore1"] 
-      },
-        "default": ["geoCore"],
-       
-      "description": "Type of GeoCore layer."
     },
 
     "TypeGeoviewLayerType": {
@@ -2283,7 +2310,15 @@
       "description": "Type of GeoView layer."
     },
 
-    
+     "TypeGeoCoreLayerType": {
+      "type": "string",
+      "items": {
+        "enum": ["geoCore1"] 
+      },
+        "default": ["geoCore"],
+       
+      "description": "Type of GeoCore layer."
+    },
     
     "TypeImageStaticLayerEntryConfig": {
      
@@ -2331,26 +2366,47 @@
       "type": "object",
     
       "properties": {
-        "initialView": {
-          "$ref": "#/definitions/TypeInitialViewSettings",
-          "description": "Settings for the initial viewing area of the map."
-        },
+        
         "enableRotation": {
           "type": "boolean",
           "default": true,
           "title": "Enable rotation. If false, a rotation constraint that always sets the rotation to zero is used."
         },
-        "maxExtent": {
+        "center": {
           "type": "array",
-          "minItems":4,
+          "items": [
+             {
+              "type": "number",
+              "minimum": -160,
+              "maximum": 160,
+              "default": -106,
+              "description": "Initial longitude value for map center."
+            },
+            {
+              "type": "number",
+              "minimum": -80,
+              "maximum": 80,
+              "default": 60,
+              "description": "Initial latitude value for map center."
+            }
+          
+          ],
+          "default": [
+            -106,
+            60
+          ]
+        },
+        "extent": {
+          "type": "array",
+          "minItems":0,
           "maxItems":4,
           "items": {
+            
               "type": "number"
+            
           },
-           "default": [-125, 30, -60, 89],
           "description": "The extent that constrains the view. Called with [minX, minY, maxX, maxY] extent coordinates."
         },
-     
         "minZoom": {
           "type": "integer",
           "description": "The minimum zoom level used to determine the resolution constraint. If not set, will use default from basemap.",
@@ -2370,81 +2426,20 @@
           "maximum": 360,
           "default": 0,
           "description": "The initial rotation for the view in degree (positive rotation clockwise, 0 means North). Will be converted to radiant by the viewer."
+        },
+        "zoom": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 28,
+          "default": 12,
+          "description": "Initial map zoom level. Zoom level are define by the basemap zoom levels."
         }
-     
-      }  ,
-      "required":[ "initialView"]
+      },
+      "required": ["zoom", "center"]
     },
     
-    "TypeInitialViewSettings": {
    
-      "type": "object",
-      "maxItems": 1,
-      "properties": {
 
-        "extent": {
-          "type": "array",
-          "minItems": 4,
-          "maxItems": 4,
-          "items": {
-            "type": "number"
-          },
-           "default": [-125, 30, -60, 89],
-          "description": "The extent for the initial view. Called with [minX, minY, maxX, maxY] extent coordinates."
-        },
-        "layerIds": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string"
-          },
-          "description": "Geoview layer ID(s) or layer path(s) of layer(s) to use as initial map focus."
-        },
-         "zoomAndCenter": {
-          "$ref": "#/definitions/TypeZoomAndCenter"
-        }
-      } ,
-      "required":[  "zoomAndCenter","extent"]
-    },
-   
-   "TypeZoomAndCenter": {
-          "type": "array",
-          "items": [
-            {
-              "type": "number",
-              "minimum": 0,
-          "maximum": 28,
-          "default": 3.5,
-          "description": "Initial map zoom level. Zoom level are define by the basemap zoom levels. Levels between whole numbers are supported to fine tune initial view."
-      
-            },
-            {
-              "type": "array",
-              "items": [
-                {
-                  "type": "number",
-                    "minimum": -160,
-            "maximum": 160,
-            "default": -90,
-            "description": "Initial longitude value for map center."
-                },
-                {
-                  "type": "number",
-                  "minimum": -80,
-            "maximum": 80,
-            "default": 60,
-            "description": "Initial latitude value for map center."
-                }
-              ]
-            }
-          ]
-        },
-
-   "TypeInteraction": { 
-      "enum": ["static", "dynamic"],
-      "default": "dynamic",
-      "description": "If map is dynamic (pan/zoom) or static to act as a thumbnail (no nav bar)."
-    }, 
   
     "TypeAppBarProps": {
       "type": "object",
