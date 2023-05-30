@@ -5,7 +5,6 @@ some UUID to test it
 # 881867f4-7149-11ec-90d6-0242ac120003
 # b87924ac-72ec-11ec-90d6-0242ac120003
 
-[Demo](http://plugin-scema-template-deploybucket-1vj1hgukq0iz4.s3-website.ca-central-1.amazonaws.com/)
 
 [Latest Demo]   (https://pewillia.github.io/GeoView-Plugins-Config/plugin/)
 
