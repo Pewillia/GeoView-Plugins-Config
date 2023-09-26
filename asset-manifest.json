@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/GeoView-Plugins-Config/static/css/main.d130101c.css",
-    "main.js": "/GeoView-Plugins-Config/static/js/main.739c016e.js",
+    "main.js": "/GeoView-Plugins-Config/static/js/main.3874eed6.js",
     "index.html": "/GeoView-Plugins-Config/index.html",
     "main.d130101c.css.map": "/GeoView-Plugins-Config/static/css/main.d130101c.css.map",
-    "main.739c016e.js.map": "/GeoView-Plugins-Config/static/js/main.739c016e.js.map"
+    "main.3874eed6.js.map": "/GeoView-Plugins-Config/static/js/main.3874eed6.js.map"
   },
   "entrypoints": [
     "static/css/main.d130101c.css",
-    "static/js/main.739c016e.js"
+    "static/js/main.3874eed6.js"
   ]
 }
