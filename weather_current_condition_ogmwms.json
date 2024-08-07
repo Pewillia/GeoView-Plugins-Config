@@ -6,17 +6,13 @@
       "home"
    ],
    "components":[
-      "overview-map",
-      "north-arrow"
+     
    ],
    "corePackages":[
       
    ],
    "externalPackages":[
       
-   ],
-   "suportedLanguages":[
-      "en"
    ],
    "map":{
       "basemapOptions":{
@@ -36,20 +32,12 @@
                   "layerName":{
                      "en":"met3"
                   },
-                  "initialSettings":{
-                     "opacity":1,
-                     "visible":"yes"
-                  },
                   "source":{
                      "dataAccessPath":{
                         "en":"https://geo.weather.gc.ca/geomet"
                      },
                      "featureInfo":{
-                        "customParser":{
-                           "template":{
-                              "en":"ee"
-                           }
-                        },
+                      
                         "nameField":{
                            "en":"plain_text"
                         },
@@ -114,15 +102,11 @@
             }
          }
       ],
-      "viewSettings":{
-         "enableRotation":true,
-         "center":[
-            -106,
-            60
-         ],
-         "projection":3857,
-         "rotation":0,
-         "zoom":12
-      }
+     "viewSettings": {
+      "initialView": {
+        "zoomAndCenter": [12, [45, 75]]
+      },
+      "projection": 3978
+    }
    }
 }

@@ -32,7 +32,7 @@
                {
                   "entryType":"vector-tile",
                   "initialSettings":{
-                     "opacity":1,
+                   
                      "visible":"yes"
                   },
                   "layerId":"0",

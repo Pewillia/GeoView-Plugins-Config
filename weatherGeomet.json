@@ -1,9 +1,10 @@
 {
   "map": {
     "interaction": "static",
-    "viewSettings": {
-      "zoom": 4,
-      "center": [-100, 60],
+     "viewSettings": {
+      "initialView": {
+        "zoomAndCenter": [12, [45, 75]]
+      },
       "projection": 3857
     },
     "basemapOptions": {

@@ -55,10 +55,7 @@
          }
       ],
       "viewSettings":{
-         "center":[
-            -106,
-            60
-         ],
+         
          "zoom":12,
          "enableRotation":true,
          "projection":3978,

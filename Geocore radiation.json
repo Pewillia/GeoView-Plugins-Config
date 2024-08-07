@@ -31,16 +31,7 @@
             }
          }
       ],
-      "viewSettings":{
-         "center":[
-            -106,
-            60
-         ],
-         "zoom":12,
-         "enableRotation":true,
-         "projection":3978,
-         "rotation":0
-      },
+      
       "highlightColor":"black"
    }
 }

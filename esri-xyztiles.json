@@ -7,11 +7,8 @@
       },
       "interaction":"dynamic",
       "viewSettings":{
-         "center":[
-            -106,
-            60
-         ],
-         "zoom":12,
+         
+         
          "enableRotation":true,
          "projection":3978,
          "rotation":0
@@ -27,8 +24,8 @@
                      "en":"world2"
                   },
                   "initialSettings":{
-                     "opacity":1,
-                     "visible":"yes"
+                     
+                   
                   },
                   "schemaTag":"ogcWms",
                   "source":{
@@ -59,9 +56,7 @@
       },
       "collapsed":false
    },
-   "suportedLanguages":[
-      "en"
-   ],
+ 
    "theme":"dark",
    "navBar":[
       "zoom",
