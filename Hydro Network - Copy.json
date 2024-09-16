@@ -1,0 +1,30 @@
+{
+   "map":{
+      "interaction":"dynamic",
+      "viewSettings":{
+        "initialView":{
+         "zoomAndCenter":[3.5,[-90,60]]
+         },
+         "projection":3857
+      },
+      "basemapOptions":{
+         "basemapId":"transport",
+         "shaded":true,
+         "labeled":true
+      },
+   
+   "listOfGeoviewLayerConfig":[
+      {
+         "geoviewLayerType":"geoCore",
+         "geoviewLayerId":"21b821cf-0f1c-40ee-8925-eab12d357668",
+      
+ "initialSettings":{
+               
+               "states":{
+                  "visible":true
+               }
+            }
+}
+   ]
+}
+}

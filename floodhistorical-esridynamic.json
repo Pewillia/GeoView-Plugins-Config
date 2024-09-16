@@ -1,23 +1,4 @@
 {
-   "theme":"dark",
-   "navBar":[
-      "zoom",
-      "fullscreen",
-      "home"
-   ],
-   "components":[
-      "overview-map",
-      "north-arrow"
-   ],
-   "corePackages":[
-      
-   ],
-   "externalPackages":[
-      
-   ],
-   "suportedLanguages":[
-      "en"
-   ],
    "map":{
       "basemapOptions":{
          "shaded":true,
@@ -77,14 +58,22 @@
          }
       ],
       "viewSettings":{
-         "enableRotation":true,
-         "center":[
-            -106,
-            60
-         ],
+          "initialView":{
+         "zoomAndCenter":[3.5,[-90,60]]
+          },
          "projection":3857,
          "rotation":0,
          "zoom":12
       }
-   }
+   },
+   "theme":"dark",
+   "navBar":[
+      "zoom",
+      "fullscreen",
+      "home"
+   ],
+   "components":[
+      "overview-map",
+      "north-arrow"
+   ]
 }
